@@ -1,7 +1,7 @@
 body {
     display: grid;
     place-items: center;
-    background-color: #b4a7d6;
+    background-color: #6fb7c4;
     font-family: Arial, Helvetica, sans-serif;
   }
   
@@ -12,5 +12,10 @@ body {
   }
   
   h1 {
-    color: #8873be;
+    color: #14e65a;
+    text-align: center;
+  }
+  Fields {
+    color: #e7a2f0;
+    text-align: center;
   }

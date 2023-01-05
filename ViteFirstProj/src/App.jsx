@@ -1,17 +1,17 @@
 import Welcome from "./components/Welcome"
+import Form from "./components/Form"
 
- export default function App() {
+
+ function App() {
     return (
-      <>
-        
-        <div>
-            Hello World
-             
-        </div>
-        <Welcome/>
-   
+            <div>
+                <h1>Welcome To Reagistration Form</h1>
+                 <Form />
+                 <Welcome />
 
-      </>
+             </div>
+                 
     );
-  }
+  };
+      export default App;
   
