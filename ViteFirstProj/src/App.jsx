@@ -1,20 +1,12 @@
-import Welcome from "./components/Welcome"
-import Form from './components/Form'
-import Header from './components/Header';
+
+import Admissionform from "./components/Admissionform";
 
 
-
-
-
- const App= () => {
+const App= () => {
     return (
-            <div className="wrapper">
+            <div>
 
-                <Header appname="Vite+React" />
-
-                <h2>Welcome To Reagistration Form</h2>
-
-                <Form />
+            <Admissionform />
                 
             </div>
              
