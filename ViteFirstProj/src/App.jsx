@@ -1,13 +1,12 @@
-
-import Admissionform from "./components/Admissionform";
+import Submissionform from "./components/Submissionform";
 
 
 const App= () => {
     return (
             <div>
 
-            <Admissionform />
-                
+             <Submissionform/>
+
             </div>
              
                  
