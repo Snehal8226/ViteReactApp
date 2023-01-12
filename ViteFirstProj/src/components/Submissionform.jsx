@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Typography } from "@mui/material";
+import { CircularProgress, Divider, FormHelperText, Typography } from "@mui/material";
 import { Box,Container,CssBaseline } from "@mui/material";
 import { TextField } from "@mui/material";
 import { FormControl, FormGroup }  from "@mui/material";
@@ -14,7 +14,8 @@ import { useState, useEffect } from "react";
 import Confirmationform from "./Confirmationform";
 
 
-const Submissionform=(props)=> {
+
+const Submissionform=()=> {
 
   const [firstname, setFirstName] = useState("")
               
@@ -114,8 +115,13 @@ const Submissionform=(props)=> {
 
     console.log(completeform);
       setTimeout(() => {
+        <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
 
         setformToPropogate(completeform);
+
+        
         
       }, 3000);
 
@@ -124,15 +130,22 @@ const Submissionform=(props)=> {
        
   const [completeform, setCompleteform]=useState({});
 
+  /*useEffect(() => {
+    setGender('female');
+    setAge(20);
+
+
+}, [setGender][setAge]);*/
+
 
   const [formToPropogate,setformToPropogate]=useState({});
 
   
-  /*useEffect=(()=>{
-     setGender("female");
-     setAge(20);
+  useEffect(() => {
+     setGender('other');
+     
 
-    }, [setGender]);*/
+    }, [setGender]);
 
 
     return(
@@ -196,6 +209,7 @@ const Submissionform=(props)=> {
           <MenuItem value={60}>60</MenuItem>
           
           </Select>
+          <FormHelperText>10,20,30,etc....options</FormHelperText>
        </FormControl>
     
 
@@ -212,14 +226,16 @@ const Submissionform=(props)=> {
           <MenuItem value={"DataBase"}>DataBase</MenuItem>
           <MenuItem value={"DevOps"}>DevOps</MenuItem>
           </Select>
+          <FormHelperText>UI,API,DataBase,DevOps,options</FormHelperText>
        </FormControl>
        </Box><br/><br/>
 
       <Box sx={{display:"flex",justifyContent:"flex-end"}}>
         {
+          
         <Button  variant="contained" disabled={ !completeform.firstname || !completeform.developerin || !completeform.gender} onClick={handleSubmit}>Submit</Button>
         }
-    
+        
     </Box>
               
 
