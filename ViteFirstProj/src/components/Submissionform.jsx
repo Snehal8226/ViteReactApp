@@ -10,77 +10,137 @@ import { InputLabel } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import { Select } from "@mui/material";
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Confirmationform from "./Confirmationform";
 
 
-const Submissionform=()=> {
+const Submissionform=(props)=> {
 
   const [firstname, setFirstName] = useState("")
+              
                         const onfirstnamechange =(event)=>{
+                          console.log('Firstname >>', event.target.value);
                         setFirstName(event.target.value);
+                        const form={...completeform};
+                        form.firstname=event.target.value;
+                        setCompleteform(form);
      };
 
   const [middlename, setMiddleName] = useState("")
                          const onmiddlenamechange = (event)=>{
+                          console.log('Middlename >>', event.target.value);
                         setMiddleName(event.target.value);
+                        const form={...completeform};
+                        form.middlename=event.target.value;
+                        setCompleteform(form);
       };
   const [lastname, setLastName] = useState("")
                         const onlastnamechange = (event)=>{
+                          console.log('Lastname >>', event.target.value);
                           setLastName(event.target.value);
+                          const form={...completeform};
+                        form.lastname=event.target.value;
+                        setCompleteform(form);
       };
   const [gender, setGender] = useState("")
                         const ongenderchange = (event)=>{
+                          console.log('Gender >>',event.target.value);
                           setGender(event.target.value);
+                          const form={...completeform};
+                        form.gender=event.target.value;
+                        setCompleteform(form);
                         };
 
-  const [espresso,setEspresso] = useState("")
-                        const onespressochange = (event)=>{
+  const [coffee,setCoffee] = useState("")
+                        const oncoffeechange = (event)=>{
+                          console.log('Cofee i Like >>', event.target.value);
+                          setCoffee(event.target.value);
+                          const form={...completeform};
+                        form.coffee=event.target.value;
+                        setCompleteform(form);
+                        };
+   const [espresso,setEspresso]= useState("") 
+                       const onespressochange = (event)=>{
+                        console.log('confee i like >>', event.target.value);                         
                           setEspresso(event.target.value);
+                          const form={...completeform};
+                        form.coffee=event.target.value;
+                        setCompleteform(form);
                         };
-                        const [cappuccino,setCappuccino] = useState("")
+   const [cappuccino,setCappuccino] = useState("")
                         const oncappuccinochange = (event)=>{
+                          console.log('cofee i like >>',event.target.value);
                           setCappuccino(event.target.value);
+                          const form={...completeform};
+                        form.coffee =event.target.value;
+                        setCompleteform(form);
                         };
-                        const [flatwhite,setFlatWhite] = useState("")
+  const [flatwhite,setFlatWhite] = useState("")
                         const onflatwhitechange = (event)=>{
+                          console.log('cofee i like >>',event.target.value);
                           setFlatWhite(event.target.value);
+                          const form={...completeform};
+                        form.coffee=event.target.value;
+                        setCompleteform(form)
                         };
-                        const [longblack,setLongBlack] = useState("")
+  const [longblack,setLongBlack] = useState("")
                         const onlongblackchange = (event)=>{
+                          console.log('cofee i like >>',event.target.value);
                           setLongBlack(event.target.value);
+                          const form={...completeform};
+                        form.coffee=event.target.value;
+                        setCompleteform(form);
                         };
              
   const [age, setAge] = useState("");
                         const handleChange = (event) => {
+                          console.log('Age >>',event.target.value);
                          setAge(event.target.value);
+                         const form={...completeform};
+                        form.age=event.target.value;
+                        setCompleteform(form);
   };
 
   const [developerin,setDeveloperin]=useState("")
                   const ondeveloperinchange =(event)=>{
+                    console.log('Developer In >>',event.target.value);
                          setDeveloperin(event.target.value)
+                         const form={...completeform};
+                        form.developerin=event.target.value;
+                        setCompleteform(form);
+  };
+
+  const handleSubmit=()=>{
+
+    console.log(completeform);
+      setTimeout(() => {
+
+        setformToPropogate(completeform);
+        
+      }, 3000);
+
+  }
+
+       
+  const [completeform, setCompleteform]=useState({});
+
+
+  const [formToPropogate,setformToPropogate]=useState({});
+
+
+
+  /*const [submit,setSubmit]=usestate("")
+                  const handlesubmit=(event)=>{
+                    setSubmit(event.target.value)
   };
   
+  useEffect=(()=>{
+     setGender("female");
+     setAge(20);
 
-     const Form=()=>{
-      const FormInfo={
-          Fname:firstname,
-          Mname:middlename,
-          Lname:lastname,
-          Female:female,
-          Male:male,
-          Other:other,
-          Espresso:espresso,
-          Cappuccino:cappuccino,
-          Flatwhite:flatwhite,
-          Longblack:longblack,
-          UI:UI,
-          API:API,
-          DataBase:DataBase,
-          DevOps:DevOps
-      }
-console.log(FormInfo);
+    }, [setGender]);*/
 
-     }
+
     return(
 
 
@@ -103,7 +163,7 @@ console.log(FormInfo);
        <Box sx={{display:"flex",justifyContent:"space-between" }}>     
     <FormControl >
     <FormLabel id="demo-row-radio-buttons-group-label" value={gender}>Gender</FormLabel>
-                <RadioGroup aria-labelledby="demo-row-radio-buttons-group-label" onChange={ongenderchange}
+                <RadioGroup aria-labelledby="demo-row-radio-buttons-group-label" value={gender} onChange={ongenderchange}
                   name="row-radio-buttons-group">
                   <FormControlLabel value="female" control={<Radio />} label="Female" />
                  <FormControlLabel value="male" control={<Radio />} label="Male" />
@@ -113,12 +173,12 @@ console.log(FormInfo);
 
     <Box sx={{display:'flex'}}>
       <FormGroup >
-    <FormLabel>Coffee I Like</FormLabel>
+    <FormLabel value={"coffee"} onChange={oncoffeechange} >Coffee I Like</FormLabel>
     
-      <FormControlLabel value={espresso} control={<Checkbox/>} onChange={onespressochange} label="Espresso" />
-      <FormControlLabel value={cappuccino} control={<Checkbox/>} onChange={oncappuccinochange} label="Cappuccino" />
-      <FormControlLabel value={flatwhite} control={<Checkbox/>} onChange={onflatwhitechange} label="Flat White" />
-      <FormControlLabel value={longblack} control={<Checkbox/>} onChange={onlongblackchange} label="Long Black" />
+      <FormControlLabel value={"espresso"} control={<Checkbox/>} onChange={onespressochange} label="Espresso" />
+      <FormControlLabel value={"cappuccino"} control={<Checkbox/>} onChange={oncappuccinochange} label="Cappuccino" />
+      <FormControlLabel value={"flatwhite"} control={<Checkbox/>} onChange={onflatwhitechange} label="Flat White" />
+      <FormControlLabel value={"longblack"} control={<Checkbox/>} onChange={onlongblackchange} label="Long Black" />
       </FormGroup>
       </Box>
       </Box>
@@ -153,21 +213,27 @@ console.log(FormInfo);
           label="Developer In"
           onChange={ondeveloperinchange}
         >
-          <MenuItem value="UI">UI</MenuItem>
-          <MenuItem value="API">API</MenuItem>
-          <MenuItem value="DataBase">DataBase</MenuItem>
-          <MenuItem value="DevOps">DevOps</MenuItem>
+          <MenuItem value={"UI"}>UI</MenuItem>
+          <MenuItem value={"API"}>API</MenuItem>
+          <MenuItem value={"DataBase"}>DataBase</MenuItem>
+          <MenuItem value={"DevOps"}>DevOps</MenuItem>
           </Select>
        </FormControl>
        </Box><br/><br/>
 
-      <Box sx={{display:'flex:end'}}>
-    <Button variant="contained">Submit</Button>
+      <Box sx={{display:"flex",justifyContent:"flex-end"}}>
+        {
+        <Button  variant="contained" disabled={ !completeform.firstname || !completeform.developerin || !completeform.gender} onClick={handleSubmit}>Submit</Button>
+        }
+    
     </Box>
+              
 
-                   
+              <pre>{JSON.stringify(completeform, null ,3)}</pre>
+              
         </Box>
       </Container>
+      <Confirmationform form={formToPropogate} />
     </React.Fragment>
 
     
