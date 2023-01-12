@@ -127,14 +127,8 @@ const Submissionform=(props)=> {
 
   const [formToPropogate,setformToPropogate]=useState({});
 
-
-
-  /*const [submit,setSubmit]=usestate("")
-                  const handlesubmit=(event)=>{
-                    setSubmit(event.target.value)
-  };
   
-  useEffect=(()=>{
+  /*useEffect=(()=>{
      setGender("female");
      setAge(20);
 
