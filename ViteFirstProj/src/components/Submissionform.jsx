@@ -20,7 +20,7 @@ const Submissionform=()=> {
   const [firstname, setFirstName] = useState("")
               
                         const onfirstnamechange =(event)=>{
-                          console.log('Firstname >>', event.target.value);
+                                                                   //console.log('Firstname >>', event.target.value);
                         setFirstName(event.target.value);
                         const form={...completeform};
                         form.firstname=event.target.value;
@@ -29,7 +29,7 @@ const Submissionform=()=> {
 
   const [middlename, setMiddleName] = useState("")
                          const onmiddlenamechange = (event)=>{
-                          console.log('Middlename >>', event.target.value);
+                                                                   //console.log('Middlename >>', event.target.value);
                         setMiddleName(event.target.value);
                         const form={...completeform};
                         form.middlename=event.target.value;
@@ -37,7 +37,7 @@ const Submissionform=()=> {
       };
   const [lastname, setLastName] = useState("")
                         const onlastnamechange = (event)=>{
-                          console.log('Lastname >>', event.target.value);
+                                                                  //console.log('Lastname >>', event.target.value);
                           setLastName(event.target.value);
                           const form={...completeform};
                         form.lastname=event.target.value;
@@ -45,7 +45,7 @@ const Submissionform=()=> {
       };
   const [gender, setGender] = useState("")
                         const ongenderchange = (event)=>{
-                          console.log('Gender >>',event.target.value);
+                                                             //console.log('Gender >>',event.target.value);
                           setGender(event.target.value);
                           const form={...completeform};
                         form.gender=event.target.value;
@@ -54,7 +54,7 @@ const Submissionform=()=> {
 
   const [coffee,setCoffee] = useState("")
                         const oncoffeechange = (event)=>{
-                          console.log('Cofee i Like >>', event.target.value);
+                                                        //console.log('Cofee i Like >>', event.target.value);
                           setCoffee(event.target.value);
                           const form={...completeform};
                         form.coffee=event.target.value;
@@ -62,7 +62,7 @@ const Submissionform=()=> {
                         };
    const [espresso,setEspresso]= useState("") 
                        const onespressochange = (event)=>{
-                        console.log('confee i like >>', event.target.value);                         
+                                                         //console.log('confee i like >>', event.target.value);                         
                           setEspresso(event.target.value);
                           const form={...completeform};
                         form.coffee=event.target.value;
@@ -70,7 +70,7 @@ const Submissionform=()=> {
                         };
    const [cappuccino,setCappuccino] = useState("")
                         const oncappuccinochange = (event)=>{
-                          console.log('cofee i like >>',event.target.value);
+                                                             //console.log('cofee i like >>',event.target.value);
                           setCappuccino(event.target.value);
                           const form={...completeform};
                         form.coffee =event.target.value;
@@ -78,7 +78,7 @@ const Submissionform=()=> {
                         };
   const [flatwhite,setFlatWhite] = useState("")
                         const onflatwhitechange = (event)=>{
-                          console.log('cofee i like >>',event.target.value);
+                                                              // console.log('cofee i like >>',event.target.value);
                           setFlatWhite(event.target.value);
                           const form={...completeform};
                         form.coffee=event.target.value;
@@ -86,7 +86,7 @@ const Submissionform=()=> {
                         };
   const [longblack,setLongBlack] = useState("")
                         const onlongblackchange = (event)=>{
-                          console.log('cofee i like >>',event.target.value);
+                                                               // console.log('cofee i like >>',event.target.value);
                           setLongBlack(event.target.value);
                           const form={...completeform};
                         form.coffee=event.target.value;
@@ -95,7 +95,7 @@ const Submissionform=()=> {
              
   const [age, setAge] = useState("");
                         const handleChange = (event) => {
-                          console.log('Age >>',event.target.value);
+                                                                //console.log('Age >>',event.target.value);
                          setAge(event.target.value);
                          const form={...completeform};
                         form.age=event.target.value;
@@ -104,7 +104,7 @@ const Submissionform=()=> {
 
   const [developerin,setDeveloperin]=useState("")
                   const ondeveloperinchange =(event)=>{
-                    console.log('Developer In >>',event.target.value);
+                                                                  //console.log('Developer In >>',event.target.value);
                          setDeveloperin(event.target.value)
                          const form={...completeform};
                         form.developerin=event.target.value;
@@ -114,16 +114,15 @@ const Submissionform=()=> {
   const handleSubmit=()=>{
 
     console.log(completeform);
-      setTimeout(() => {
-        <Box sx={{ display: 'flex' }}>
+    
+           setTimeout(() => {
+                              setformToPropogate(completeform);
+
+                             }, 3000);
+
+         <Box sx={{ display: 'flex' }}>
       <CircularProgress />
     </Box>
-
-        setformToPropogate(completeform);
-
-        
-        
-      }, 3000);
 
   }
 
@@ -153,16 +152,16 @@ const Submissionform=()=> {
 
         <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="md">
+      <Container maxWidth="sm">
 
-        <Box sm={{ height: '100vh', padding:20 }} >
+        <Box sm={{ height: '100vh', padding:20, }} >
 
         <Box sx={{bgcolor:"orange",display:'flex',flexDirection:'row',justifyContent:'center'}}>Submission Form</Box><br />
-            {/*<Typography>SUBMISSION FORM</Typography>*/}
+            
             <Divider />
           
-            
-            <Box sx={{ display:"flex", padding:2, justifyContent:"space-between" }}>
+            <Typography >Personal Information </Typography>
+            <Box sx={{ display:"flex", padding:2 , justifyContent:"space-between" }}>
             <TextField id="outlined-basic" label="FirstName" value={firstname} onChange={onfirstnamechange} variant="outlined" />
             <TextField id="outlined-basic" label="MiddleName" value={middlename} onChange={onmiddlenamechange} variant="outlined" />
             <TextField id="outlined-basic" label="LastName" value={lastname} onChange={onlastnamechange} variant="outlined" /><br/><br/>
@@ -178,14 +177,14 @@ const Submissionform=()=> {
     </RadioGroup>
     </FormControl>
 
-    <Box sx={{display:'flex'}}>
+    <Box sx={{display:'flex',border:"black"}}>
       <FormGroup >
-    <FormLabel value={"coffee"} onChange={oncoffeechange} >Coffee I Like</FormLabel>
+    <FormLabel value="coffee" onChange={oncoffeechange} >Coffee I Like</FormLabel>
     
-      <FormControlLabel value={"espresso"} control={<Checkbox/>} onChange={onespressochange} label="Espresso" />
-      <FormControlLabel value={"cappuccino"} control={<Checkbox/>} onChange={oncappuccinochange} label="Cappuccino" />
-      <FormControlLabel value={"flatwhite"} control={<Checkbox/>} onChange={onflatwhitechange} label="Flat White" />
-      <FormControlLabel value={"longblack"} control={<Checkbox/>} onChange={onlongblackchange} label="Long Black" />
+      <FormControlLabel value='espresso' control={<Checkbox/>} onChange={onespressochange} label="Espresso" />
+      <FormControlLabel value='cappuccino' control={<Checkbox/>} onChange={oncappuccinochange} label="Cappuccino" />
+      <FormControlLabel value='flatwhite' control={<Checkbox/>} onChange={onflatwhitechange} label="Flat White" />
+      <FormControlLabel value='longblack'  control={<Checkbox/>} onChange={onlongblackchange} label="Long Black" />
       </FormGroup>
       </Box>
       </Box>
@@ -228,7 +227,8 @@ const Submissionform=()=> {
           </Select>
           <FormHelperText>UI,API,DataBase,DevOps,options</FormHelperText>
        </FormControl>
-       </Box><br/><br/>
+       </Box>
+       <br/><br/>
 
       <Box sx={{display:"flex",justifyContent:"flex-end"}}>
         {
@@ -237,9 +237,8 @@ const Submissionform=()=> {
         }
         
     </Box>
-              
-
-              <pre>{JSON.stringify(completeform, null ,3)}</pre>
+    
+               <pre>{JSON.stringify(completeform, null ,3)}</pre>
               
         </Box>
       </Container>
