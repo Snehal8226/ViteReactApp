@@ -17,10 +17,11 @@ const Confirmationform=(props)=>{
  
              <Container maxWidth='md'>
 
-                <Box sx={{bgcolor:"lightGreen",height:'40vh',padding:3}}>
+                <Box sx={{ border:'1px dashed teal',bgcolor:"lightGreen",height:'40vh',padding:3}}>
 
                    <pre>{JSON.stringify(props.form,null,2)}</pre>
 
+                   </Box>
 
                     <Box sx={{display:'flex',justifyContent:'flex-end'}}>
 
@@ -28,7 +29,7 @@ const Confirmationform=(props)=>{
                     
                     </Box>
                 
-                </Box>
+                
                 
         </Container>
      )

@@ -121,14 +121,21 @@ const Submissionform=()=> {
 
                              }, 3000);
 
-         <Box sx={{ display: 'flex' }}>
+  }
+  const progress=()=>{
+    return(
+
+      <Box sx={{ display: 'flex' }}>
       <CircularProgress />
     </Box>
 
+    )
   }
 
        
   const [completeform, setCompleteform]=useState({});
+
+  const [formToPropogate,setformToPropogate]=useState({});
 
   /*useEffect(() => {
     setGender('female');
@@ -138,7 +145,7 @@ const Submissionform=()=> {
 }, [setGender][setAge]);*/
 
 
-  const [formToPropogate,setformToPropogate]=useState({});
+  
 
   
   useEffect(() => {
@@ -155,7 +162,7 @@ const Submissionform=()=> {
 
         <Box sm={{ height: '100vh', padding:20, }} >
 
-        <Box sx={{bgcolor:"orange",display:'flex',flexDirection:'row',justifyContent:'center'}}>Submission Form</Box><br />
+        <Box sx={{bgcolor:"orange",display:'flex',justifyContent:'center'}}>Submission Form</Box><br />
              <Box sx={{ border:'2px dashed teal',padding:3 }}>
             <Typography >Personal Information </Typography>
             <Divider />
