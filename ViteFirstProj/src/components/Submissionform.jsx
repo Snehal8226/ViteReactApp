@@ -20,7 +20,7 @@ const Submissionform=()=> {
   const [firstname, setFirstName] = useState("")
               
                         const onfirstnamechange =(event)=>{
-                                                                   //console.log('Firstname >>', event.target.value);
+                                                                   console.log('Firstname >>', event.target.value);
                         setFirstName(event.target.value);
                         const form={...completeform};
                         form.firstname=event.target.value;
@@ -31,6 +31,7 @@ const Submissionform=()=> {
                          const onmiddlenamechange = (event)=>{
                                                                    //console.log('Middlename >>', event.target.value);
                         setMiddleName(event.target.value);
+
                         const form={...completeform};
                         form.middlename=event.target.value;
                         setCompleteform(form);
@@ -60,7 +61,7 @@ const Submissionform=()=> {
                         form.coffee=event.target.value;
                         setCompleteform(form);
                         };
-   const [espresso,setEspresso]= useState("") 
+   const [espresso,setEspresso]= useState("espresso") 
                        const onespressochange = (event)=>{
                                                          //console.log('confee i like >>', event.target.value);                         
                           setEspresso(event.target.value);
@@ -68,7 +69,7 @@ const Submissionform=()=> {
                         form.coffee=event.target.value;
                         setCompleteform(form);
                         };
-   const [cappuccino,setCappuccino] = useState("")
+   const [cappuccino,setCappuccino] = useState("cappuccino")
                         const oncappuccinochange = (event)=>{
                                                              //console.log('cofee i like >>',event.target.value);
                           setCappuccino(event.target.value);
@@ -76,7 +77,7 @@ const Submissionform=()=> {
                         form.coffee =event.target.value;
                         setCompleteform(form);
                         };
-  const [flatwhite,setFlatWhite] = useState("")
+  const [flatwhite,setFlatWhite] = useState("flatewhite")
                         const onflatwhitechange = (event)=>{
                                                               // console.log('cofee i like >>',event.target.value);
                           setFlatWhite(event.target.value);
@@ -84,7 +85,7 @@ const Submissionform=()=> {
                         form.coffee=event.target.value;
                         setCompleteform(form)
                         };
-  const [longblack,setLongBlack] = useState("")
+  const [longblack,setLongBlack] = useState("longblack")
                         const onlongblackchange = (event)=>{
                                                                // console.log('cofee i like >>',event.target.value);
                           setLongBlack(event.target.value);
@@ -102,7 +103,7 @@ const Submissionform=()=> {
                         setCompleteform(form);
   };
 
-  const [developerin,setDeveloperin]=useState("")
+  const [developerin,setDeveloperin]=useState(" ")
                   const ondeveloperinchange =(event)=>{
                                                                   //console.log('Developer In >>',event.target.value);
                          setDeveloperin(event.target.value)
@@ -142,9 +143,7 @@ const Submissionform=()=> {
   
   useEffect(() => {
      setGender('other');
-     
-
-    }, [setGender]);
+     }, [setGender]);
 
 
     return(
@@ -152,15 +151,15 @@ const Submissionform=()=> {
 
         <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
 
         <Box sm={{ height: '100vh', padding:20, }} >
 
         <Box sx={{bgcolor:"orange",display:'flex',flexDirection:'row',justifyContent:'center'}}>Submission Form</Box><br />
-            
-            <Divider />
-          
+             <Box sx={{ border:'2px dashed teal',padding:3 }}>
             <Typography >Personal Information </Typography>
+            <Divider />
+            
             <Box sx={{ display:"flex", padding:2 , justifyContent:"space-between" }}>
             <TextField id="outlined-basic" label="FirstName" value={firstname} onChange={onfirstnamechange} variant="outlined" />
             <TextField id="outlined-basic" label="MiddleName" value={middlename} onChange={onmiddlenamechange} variant="outlined" />
@@ -179,12 +178,12 @@ const Submissionform=()=> {
 
     <Box sx={{display:'flex',border:"black"}}>
       <FormGroup >
-    <FormLabel value="coffee" onChange={oncoffeechange} >Coffee I Like</FormLabel>
+    <FormLabel value={coffee} onChange={oncoffeechange} >Coffee I Like</FormLabel>
     
-      <FormControlLabel value='espresso' control={<Checkbox/>} onChange={onespressochange} label="Espresso" />
-      <FormControlLabel value='cappuccino' control={<Checkbox/>} onChange={oncappuccinochange} label="Cappuccino" />
-      <FormControlLabel value='flatwhite' control={<Checkbox/>} onChange={onflatwhitechange} label="Flat White" />
-      <FormControlLabel value='longblack'  control={<Checkbox/>} onChange={onlongblackchange} label="Long Black" />
+      <FormControlLabel value={espresso} control={<Checkbox/>} onChange={onespressochange} label="Espresso" />
+      <FormControlLabel value={cappuccino} control={<Checkbox/>} onChange={oncappuccinochange} label="Cappuccino" />
+      <FormControlLabel value={flatwhite} control={<Checkbox/>} onChange={onflatwhitechange} label="Flat White" />
+      <FormControlLabel value={longblack}  control={<Checkbox/>} onChange={onlongblackchange} label="Long Black" />
       </FormGroup>
       </Box>
       </Box>
@@ -220,10 +219,10 @@ const Submissionform=()=> {
           label="Developer In"
           onChange={ondeveloperinchange}
         >
-          <MenuItem value={"UI"}>UI</MenuItem>
-          <MenuItem value={"API"}>API</MenuItem>
-          <MenuItem value={"DataBase"}>DataBase</MenuItem>
-          <MenuItem value={"DevOps"}>DevOps</MenuItem>
+          <MenuItem value="UI">UI</MenuItem>
+          <MenuItem value="API">API</MenuItem>
+          <MenuItem value="DataBase">DataBase</MenuItem>
+          <MenuItem value="DevOps">DevOps</MenuItem>
           </Select>
           <FormHelperText>UI,API,DataBase,DevOps,options</FormHelperText>
        </FormControl>
@@ -235,6 +234,7 @@ const Submissionform=()=> {
           
         <Button  variant="contained" disabled={ !completeform.firstname || !completeform.developerin || !completeform.gender} onClick={handleSubmit}>Submit</Button>
         }
+       </Box> 
         
     </Box>
     
@@ -242,12 +242,10 @@ const Submissionform=()=> {
               
         </Box>
       </Container>
+
       <Confirmationform form={formToPropogate} />
+
     </React.Fragment>
-
-    
-        
-
     )
 }
 export default Submissionform;
