@@ -1,3 +1,4 @@
+import Admissionform from "./components/Admissionform";
 import Submissionform from "./components/Submissionform";
 
 
@@ -6,6 +7,7 @@ const App= () => {
             <div>
 
              <Submissionform/>
+             {/*<Admissionform />*/}
 
             </div>
              

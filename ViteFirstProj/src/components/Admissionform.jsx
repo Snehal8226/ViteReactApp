@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Box,Container,CssBaseline, Divider, Typography } from "@mui/material";
+import { Box,Button,CircularProgress,Container,CssBaseline, Divider, Stack, Typography } from "@mui/material";
 import { TextField }  from "@mui/material"
 import { Radio,RadioGroup} from "@mui/material";
 import { FormControl,FormControlLabel,FormLabel } from "@mui/material";
 import { padding } from "@mui/system";
 import { Grid } from "@mui/material";
+import CircularUnderLoad from "./Myfunction";
 
 
 const Admissionform = () => {
@@ -26,7 +27,17 @@ const Admissionform = () => {
       console.log(Registration);
 
   }
+  
+  const progress=()=>{
+    return(
 
+      <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+      <CircularProgress color="secondary" />
+      <CircularProgress color="success" />
+      <CircularProgress color="inherit" />
+    </Stack>
+    )
+  }
     return(
 
         <React.Fragment>
@@ -64,9 +75,9 @@ const Admissionform = () => {
     <Divider/>
     <Typography variant="h7">FAMILY INFORMATION</Typography><br/><br/>
     <TextField id="outlined-basic" label="Religion" variant="outlined" /><br/><br/> 
-    <Button variant="contained">Submit</Button>
+    <Button variant="contained" onClick={ progress }>Submit</Button>
 
-    <pre>{JSON.stringify{Registration}} </pre>
+    <pre>{JSON.stringify(Registration)}</pre>
     
                 </Box>
          </Container>

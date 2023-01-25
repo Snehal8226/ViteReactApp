@@ -29,9 +29,7 @@ const Confirmationform=(props)=>{
                     
                     </Box>
                 
-                
-                
-        </Container>
+                </Container>
      )
 };
 export default Confirmationform;

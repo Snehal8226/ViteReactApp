@@ -53,7 +53,9 @@ const Submissionform=()=> {
                         setCompleteform(form);
                         };
 
-  const [coffee,setCoffee] = useState("")
+    const [selectedcoffees, setSelectedcoffees] =useState([]);                   
+
+  {/*const [coffee,setCoffee] = useState("")
                         const oncoffeechange = (event)=>{
                                                         //console.log('Cofee i Like >>', event.target.value);
                           setCoffee(event.target.value);
@@ -92,7 +94,7 @@ const Submissionform=()=> {
                           const form={...completeform};
                         form.coffee=event.target.value;
                         setCompleteform(form);
-                        };
+                        };*/}
              
   const [age, setAge] = useState("");
                         const handleChange = (event) => {
@@ -103,7 +105,7 @@ const Submissionform=()=> {
                         setCompleteform(form);
   };
 
-  const [developerin,setDeveloperin]=useState(" ")
+  const [developerin,setDeveloperin]=useState("API")
                   const ondeveloperinchange =(event)=>{
                                                                   //console.log('Developer In >>',event.target.value);
                          setDeveloperin(event.target.value)
@@ -112,17 +114,56 @@ const Submissionform=()=> {
                         setCompleteform(form);
   };
 
+   const handlecoffeechange = (event, type) => {
+   console.log(`${type} Value is - ${event.target.checked}`);
+    //determine the type
+    //determine wether it is selcted/unselected
+    //if selected
+    //Add in selected state
+    //else
+    //remove from selected state
+if(event.target.checked){
+  const temp=[...selectedcoffees];
+  temp.push(type);
+  setSelectedcoffees(temp)
+
+  const form={...completeform};
+  form.selectedcoffees=temp;
+  setCompleteform(form);
+
+}else{
+ //loop over existing selected coffee
+ //for type that is unchecked, remove it
+ const temp=[];
+ selectedcoffees.forEach((coffee) => {
+  if (coffee !== type) {
+    temp.push(coffee);
+     } 
+ })
+
+   setSelectedcoffees(temp);
+
+  const form={...completeform};
+  form.selectedcoffees=temp;
+  setCompleteform(form);
+
+}
+
+
+
+   }
   const handleSubmit=()=>{
 
     console.log(completeform);
     
            setTimeout(() => {
                               setformToPropogate(completeform);
+                              <CircularProgress />
 
                              }, 3000);
 
   }
-  const progress=()=>{
+  /*const progress=()=>{
     return(
 
       <Box sx={{ display: 'flex' }}>
@@ -130,7 +171,7 @@ const Submissionform=()=> {
     </Box>
 
     )
-  }
+  }*/
 
        
   const [completeform, setCompleteform]=useState({});
@@ -185,12 +226,12 @@ const Submissionform=()=> {
 
     <Box sx={{display:'flex',border:"black"}}>
       <FormGroup >
-    <FormLabel value={coffee} onChange={oncoffeechange} >Coffee I Like</FormLabel>
+    <FormLabel >Coffee I Like</FormLabel>
     
-      <FormControlLabel value={espresso} control={<Checkbox/>} onChange={onespressochange} label="Espresso" />
-      <FormControlLabel value={cappuccino} control={<Checkbox/>} onChange={oncappuccinochange} label="Cappuccino" />
-      <FormControlLabel value={flatwhite} control={<Checkbox/>} onChange={onflatwhitechange} label="Flat White" />
-      <FormControlLabel value={longblack}  control={<Checkbox/>} onChange={onlongblackchange} label="Long Black" />
+      <FormControlLabel control={<Checkbox/>} onChange={(event) => handlecoffeechange(event,"Espresso")} label="Espresso" />
+      <FormControlLabel control={<Checkbox/>} onChange={(event) => handlecoffeechange(event,"Cappuccino")} label="Cappuccino" />
+      <FormControlLabel control={<Checkbox/>} onChange={(event) => handlecoffeechange(event,"Flat White")} label="Flat White" />
+      <FormControlLabel control={<Checkbox/>} onChange={(event) => handlecoffeechange(event,"Long Black")} label="Long Black" />
       </FormGroup>
       </Box>
       </Box>
@@ -219,11 +260,12 @@ const Submissionform=()=> {
     
 
     <FormControl  sx={{width:350}}>
-        <InputLabel id="demo-simple-select-label" value={developerin}>Developer In</InputLabel>
+        <InputLabel id="demo-simple-select-label" >Developer In</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          label="Developer In"
+          label="Developer In" 
+          value={developerin}
           onChange={ondeveloperinchange}
         >
           <MenuItem value="UI">UI</MenuItem>
