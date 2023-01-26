@@ -114,6 +114,10 @@ const Submissionform=()=> {
                         setCompleteform(form);
   };
 
+  const [submitionInProgress,setSubmitionInProgress] = useState(false)
+                 
+
+
    const handlecoffeechange = (event, type) => {
    console.log(`${type} Value is - ${event.target.checked}`);
     //determine the type
@@ -153,12 +157,13 @@ if(event.target.checked){
 
    }
   const handleSubmit=()=>{
-
-    console.log(completeform);
+        console.log(completeform);
+        setSubmitionInProgress(true);
     
            setTimeout(() => {
                               setformToPropogate(completeform);
-                              <CircularProgress />
+                              setSubmitionInProgress(false);
+                              
 
                              }, 3000);
 
@@ -279,10 +284,28 @@ if(event.target.checked){
        <br/><br/>
 
       <Box sx={{display:"flex",justifyContent:"flex-end"}}>
-        {
+        {/*
           
-        <Button  variant="contained" disabled={ !completeform.firstname || !completeform.developerin || !completeform.gender} onClick={handleSubmit}>Submit</Button>
+        <Button  variant="contained" disabled={ !completeform.firstname || !completeform.developerin || !completeform.gender} onClick={handleSubmit}>Submit {JSON.stringify(submitionInProgress)}</Button>
         }
+      {submitionInProgress && <CircularProgress />*/}
+      {submitionInProgress ? (
+        <CircularProgress />
+      ) : (
+        <Button  variant="contained" 
+        disabled={ !completeform.firstname || !completeform.developerin || !completeform.gender} 
+        onClick={handleSubmit}>Submit {JSON.stringify(submitionInProgress)}
+        </Button>
+      )}
+
+          {/*
+            <Button  variant="contained" 
+            disabled={submitionInProgress} 
+            endIcon/startIcon={submitionInProgress ? <CircularProgress /> : <></>}
+            onClick={handleSubmit}>Submit {JSON.stringify(submitionInProgress)}
+            </Button>
+
+      */}
        </Box> 
         
     </Box>
