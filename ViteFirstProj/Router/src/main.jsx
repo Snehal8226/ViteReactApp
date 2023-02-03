@@ -9,6 +9,7 @@ import ErrorPage from "./error-page";
 import Contact, {loader as contactLoader,} from "./routes/contact";
 import Root, { loader as rootLoader,  action as rootAction, } from "./routes/root";
 import EditContact, {action as editAction,} from "./routes/edit";
+import Submissionform from "./Submissionform";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "contacts/:contactId",
-        element: <Contact />,
+        element: <Submissionform />,
         loader: contactLoader,
       },
       {
