@@ -5,18 +5,16 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import SipleNavigation from './SipleNavigation';
 import Submissionform from '../../ViteFirstProj/src/components/Submissionform';
 import './index.css'
-import SimpleBottomNavigation from './simplebottomnavigation';
-
-
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     //element: <Typography variant='h1'>Hello World...!</Typography>
-    element: <SimpleBottomNavigation />
+    element: <SipleNavigation />
   },
   {
     path: "/test-route",
