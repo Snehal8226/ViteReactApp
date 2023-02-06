@@ -6,8 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import SipleNavigation from './SipleNavigation';
-import Submissionform from '../../ViteFirstProj/src/components/Submissionform';
 import './index.css'
+import Submissionform from './Submissionform';
 
 
 const router = createBrowserRouter([
