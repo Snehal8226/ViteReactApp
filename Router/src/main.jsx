@@ -1,29 +1,45 @@
 import { Typography } from '@mui/material';
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import SipleNavigation from './SipleNavigation';
+import ErrorPage from './error-page';
 import './index.css'
+import SimpleNavigation from './SimpleNavigation';
 import Submissionform from './Submissionform';
+import Welcome from './welcome';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    //element: <Typography variant='h1'>Hello World...!</Typography>
-    element: <SipleNavigation />
+    element: <SimpleNavigation />, 
+    children: [
+      {
+  
+        path: "/welcome",
+        element: <Welcome />,
+      },
+      {
+  
+        path: "/Submissionform",
+        element: <Submissionform />,
+      }
+    ]                          //element: <Typography variant='h1'>Hello World...!</Typography>
+    
   },
   {
     path: "/test-route",
     element: <Typography variant='h3'>Test Route......!</Typography>
   },
-  {
-    path: "/Submissionform",
-    element: <Submissionform />
-  },
+  
+  /*{
+  
+    path: "/errorpage",
+    element: <ErrorPage />
+  },*/
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

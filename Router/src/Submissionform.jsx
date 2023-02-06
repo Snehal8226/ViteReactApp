@@ -316,6 +316,9 @@ if(event.target.checked){
       </Container>
 
       <Confirmationform form={formToPropogate} />
+      <Button 
+      variant="contained" 
+      onClick = {()=>{navigate(-1)}}>Back</Button>
 
     </React.Fragment>
     )
