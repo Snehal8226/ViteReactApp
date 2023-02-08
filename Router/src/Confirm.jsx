@@ -6,7 +6,7 @@
   const Confirm=(props)=>{
       const navigate = useNavigate();
       const {state} =useLocation();
-      const {firstname,middlename,lastname}=state;
+      const {completeform}=state;
   
       const Success=()=>{
            navigate("/success");
@@ -15,10 +15,11 @@
       <Box  sx={{
         bgcolor: "lightgreen",
         display: "flex",
+        flexDirection:"column",
         padding: 5
     }}>
-        {/*<pre>{JSON.stringify(state)}</pre>*/}
-         <table border="1px solid">
+        <pre>{JSON.stringify(completeform)}</pre>
+         {/*<table border="1px solid">
           <tr>
             <td>firstname</td>
             <td>{firstname}</td>
@@ -31,24 +32,24 @@
             <td>lastname</td>
             <td>{lastname}</td>
           </tr>
-          {/*<tr>
+          <tr>
             <td>gender</td>
-            <td>{gname}</td>
+            <td>{gender}</td>
           </tr>
           <tr>
             <td>age</td>
-            <td>{age1}</td>
+            <td>{age}</td>
           </tr>
           <tr>
-            <td>coffee</td>
-            <td>{coffee}</td>
+            <td>selectedcoffees</td>
+            <td>{selectedcoffees}</td>
           </tr>
           <tr>
-            <td>technology</td>
-            <td>{technology1}</td>
-</tr>*/}
+            <td>developerin</td>
+            <td>{developerin}</td>
+</tr>
           
-        </table> 
+</table>*/} 
       <Box>
           <Button variant='contained'
           onClick={Success}
