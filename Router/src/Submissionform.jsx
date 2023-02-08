@@ -12,6 +12,7 @@ import { Select } from "@mui/material";
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
 import Confirmationform from "./Confirmationform";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -114,6 +115,8 @@ const Submissionform=()=> {
                         setCompleteform(form);
   };
 
+  const navigate = useNavigate();
+
   const [submitionInProgress,setSubmitionInProgress] = useState(false)
                  
 
@@ -156,6 +159,13 @@ if(event.target.checked){
 
 
    }
+
+   const goToSubmissionForm=()=>{
+
+    navigate("/confirm",{state:{completeform}});
+    
+    
+}        
   const handleSubmit=()=>{
         console.log(completeform);
         setSubmitionInProgress(true);
@@ -294,7 +304,7 @@ if(event.target.checked){
       ) : (
         <Button  variant="contained" 
         disabled={ !completeform.firstname || !completeform.developerin || !completeform.gender} 
-        onClick={handleSubmit}>Submit {JSON.stringify(submitionInProgress)}
+        onClick={goToSubmissionForm}>Submit {JSON.stringify(submitionInProgress)}
         </Button>
       )}
 
@@ -316,9 +326,15 @@ if(event.target.checked){
       </Container>
 
       <Confirmationform form={formToPropogate} />
+       <Box>
       <Button 
       variant="contained" 
-      onClick = {()=>{navigate(-1)}}>Back</Button>
+      onClick = {()=>{
+        navigate(-1)
+        }}
+        >
+          Back</Button>
+          </Box>
 
     </React.Fragment>
     )

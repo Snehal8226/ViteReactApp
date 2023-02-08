@@ -13,7 +13,7 @@ const SimpleNavigation = (props) => {
         typography: 'body1' 
         }}
        >
-        <Link href="/">Home</Link> 
+        <Link href="/home">Home</Link> 
         <Link href="/welcome">Welcome</Link>
         <Link href="/submissionform">Submissionform</Link>
                <Box>

@@ -5,10 +5,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Confirm from './Confirm';
 import ErrorPage from './error-page';
+import Home from './Home';
 import './index.css'
 import SimpleNavigation from './SimpleNavigation';
 import Submissionform from './Submissionform';
+import Success from './Success';
 import Welcome from './welcome';
 
 
@@ -26,7 +29,19 @@ const router = createBrowserRouter([
   
         path: "/Submissionform",
         element: <Submissionform />,
-      }
+      },
+      {
+        path: "/confirm",
+        element:<Confirm />
+        },
+       {
+        path: "/success",
+        element:<Success />
+        },
+        {
+          path: "/home",
+          element:<Home />
+          },
     ]                          //element: <Typography variant='h1'>Hello World...!</Typography>
     
   },
